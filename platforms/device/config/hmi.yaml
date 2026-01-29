@@ -1,0 +1,69 @@
+# Device Platform - HMI Mode Configuration
+mode: hmi
+
+# Runtime Configuration (from pans-runtime)
+runtime:
+  storage:
+    shards: 64
+    shard_size: 1024
+  adapters:
+    - type: mqtt
+      enabled: true
+      config:
+        broker: "tcp://localhost:1883"
+        client_id: "pansiot-hmi"
+        qos: 1
+    - type: http
+      enabled: false
+  collectors:
+    - frequency: 100ms
+      enabled: true
+    - frequency: 1s
+      enabled: true
+    - frequency: 5s
+      enabled: true
+
+# WebSocket Server
+websocket:
+  enabled: true
+  port: 8080
+  path: /ws
+  read_buffer_size: 1024
+  write_buffer_size: 1024
+  ping_period: 54
+
+# HTTP Server
+http:
+  enabled: true
+  port: 8081
+  read_timeout: 30
+  write_timeout: 30
+
+# HMI-specific features
+hmi:
+  display:
+    resolution: "1920x1080"
+    touch_enabled: true
+    fullscreen: true
+  visualization:
+    enabled: true
+    real_time_display: true
+    refresh_rate: 60  # FPS
+  local_storage:
+    enabled: true
+    path: "/data/projects"
+    auto_load: true
+    auto_load_project: "default.hmi"
+
+# Project Loading
+project:
+  load_path: "/data/projects"
+  auto_load: true
+  watch_changes: true
+  backup_on_save: true
+
+# Logging
+logging:
+  level: info
+  format: json
+  output: stdout

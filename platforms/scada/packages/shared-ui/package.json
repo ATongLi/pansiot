@@ -1,0 +1,17 @@
+{
+  "name": "@pansiot/shared-ui",
+  "version": "1.0.0",
+  "description": "Shared UI components for all platforms",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "mobx": "^6.12.0",
+    "mobx-react-lite": "^4.0.7"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "typescript": "^5.5.4"
+  }
+}

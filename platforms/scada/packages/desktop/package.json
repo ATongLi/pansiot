@@ -1,0 +1,37 @@
+{
+  "name": "@pansiot/scada-desktop",
+  "version": "1.0.0",
+  "description": "Scada Desktop Application (Electron)",
+  "main": "electron-main.js",
+  "scripts": {
+    "compile": "tsc",
+    "dev": "cross-env NODE_ENV=development npm run compile && electron .",
+    "build": "npm run compile && electron-builder"
+  },
+  "dependencies": {
+    "@pansiot/shared-editor": "workspace:*",
+    "@pansiot/shared-ui": "workspace:*",
+    "mobx": "^6.12.0",
+    "mobx-react-lite": "^4.0.7",
+    "sharp": "^0.34.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "cross-env": "^10.1.0",
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1",
+    "typescript": "^5.5.4"
+  },
+  "build": {
+    "appId": "com.pansiot.scada",
+    "productName": "PanTools Scada",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "electron-main.js",
+      "preload.js",
+      "package.json"
+    ]
+  }
+}

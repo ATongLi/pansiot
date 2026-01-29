@@ -1,0 +1,15 @@
+{
+  "name": "pansiot-scada",
+  "version": "1.0.0",
+  "description": "PansIot Scada Platform - HMI工程编辑器",
+  "private": true,
+  "scripts": {
+    "dev:desktop": "pnpm --filter desktop dev",
+    "build:desktop": "pnpm --filter desktop build",
+    "build:shared": "pnpm --filter shared-editor build",
+    "build:all": "pnpm --filter './packages/*' build"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4"
+  }
+}

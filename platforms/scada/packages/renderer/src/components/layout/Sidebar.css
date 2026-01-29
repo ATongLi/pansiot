@@ -1,0 +1,10 @@
+.sidebar {
+  width: var(--sidebar-width);  /* CR-002: 60px */
+  height: 100%;  /* 修复：使用 100% 继承父容器高度，而不是 calc(100vh - topbar-height) */
+  background: var(--color-bg-sidebar);  /* 侧边栏背景 */
+  border-right: 1px solid var(--color-border);
+  border-top: 1px solid var(--color-border);  /* 顶部边框，与标题栏区分 */
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-sm) 0;  /* 8px 上下内边距 */
+}

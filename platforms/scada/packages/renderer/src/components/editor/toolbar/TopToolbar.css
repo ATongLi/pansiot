@@ -1,0 +1,140 @@
+/**
+ * TopToolbar - Modern Internet Tool Aesthetic
+ *
+ * Design Reference: Figma, Linear, Notion
+ * - Ultra-clean with subtle borders
+ * - Refined spacing and typography
+ * - Sophisticated hover states
+ * - Premium feel through details
+ */
+
+.top-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--editor-top-toolbar-height);
+  background: #ffffff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 0 12px;
+  position: relative;
+  z-index: 10;
+  backdrop-filter: blur(20px);
+}
+
+/* ==========================================
+   主分类按钮容器
+   ========================================== */
+
+.top-toolbar__categories {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 4px;
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 8px;
+}
+
+/* ==========================================
+   主分类按钮
+   ========================================== */
+
+.toolbar-category-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  padding: 0 14px;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.65);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  user-select: none;
+}
+
+.toolbar-category-button:hover {
+  background: rgba(0, 0, 0, 0.04);
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.toolbar-category-button:active {
+  transform: scale(0.98);
+}
+
+.toolbar-category-button--active {
+  background: #ffffff;
+  color: #000000;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.08),
+    0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.toolbar-category-button__label {
+  font-size: 13px;
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* ==========================================
+   控制按钮容器
+   ========================================== */
+
+.top-toolbar__controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 8px;
+}
+
+/* ==========================================
+   展开/收缩按钮
+   ========================================== */
+
+.toolbar-toggle-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+}
+
+.toolbar-toggle-button:hover {
+  background: rgba(0, 0, 0, 0.04);
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.toolbar-toggle-button:active {
+  transform: scale(0.95);
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.toolbar-toggle-button__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  line-height: 1;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.toolbar-toggle-button:hover .toolbar-toggle-button__icon {
+  opacity: 0.9;
+}
+
+.toolbar-toggle-button--expanded .toolbar-toggle-button__icon {
+  transform: rotate(180deg);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}

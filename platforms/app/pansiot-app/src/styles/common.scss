@@ -1,0 +1,138 @@
+/**
+ * 全局通用样式
+ */
+
+/* 重置样式 */
+page {
+  background-color: #f5f5f5;
+  font-size: 28rpx;
+  line-height: 1.6;
+}
+
+/* 通用类 */
+.container {
+  padding: 30rpx;
+}
+
+.page {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+/* 文字样式 */
+.text-primary {
+  color: #007aff;
+}
+
+.text-success {
+  color: #4cd964;
+}
+
+.text-warning {
+  color: #f0ad4e;
+}
+
+.text-danger {
+  color: #dd524d;
+}
+
+.text-gray {
+  color: #8a8a8a;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* 间距工具类 */
+.mt-10 { margin-top: 10rpx; }
+.mt-20 { margin-top: 20rpx; }
+.mt-30 { margin-top: 30rpx; }
+.mb-10 { margin-bottom: 10rpx; }
+.mb-20 { margin-bottom: 20rpx; }
+.mb-30 { margin-bottom: 30rpx; }
+.ml-10 { margin-left: 10rpx; }
+.ml-20 { margin-left: 20rpx; }
+.mr-10 { margin-right: 10rpx; }
+.mr-20 { margin-right: 20rpx; }
+
+.p-10 { padding: 10rpx; }
+.p-20 { padding: 20rpx; }
+.p-30 { padding: 30rpx; }
+
+/* Flex 布局 */
+.flex {
+  display: flex;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+/* 按钮样式 */
+.btn-primary {
+  background-color: #007aff;
+  color: #ffffff;
+  border-radius: 8rpx;
+  padding: 20rpx 40rpx;
+}
+
+.btn-success {
+  background-color: #4cd964;
+  color: #ffffff;
+  border-radius: 8rpx;
+  padding: 20rpx 40rpx;
+}
+
+.btn-warning {
+  background-color: #f0ad4e;
+  color: #ffffff;
+  border-radius: 8rpx;
+  padding: 20rpx 40rpx;
+}
+
+.btn-danger {
+  background-color: #dd524d;
+  color: #ffffff;
+  border-radius: 8rpx;
+  padding: 20rpx 40rpx;
+}

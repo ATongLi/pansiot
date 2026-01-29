@@ -1,0 +1,29 @@
+{
+  "success": true,
+  "data": [
+    {
+      "id": "box1",
+      "name": "BOX1",
+      "type": "box",
+      "resolution": "1920x1080",
+      "enabled": true,
+      "description": "标准BOX型号"
+    },
+    {
+      "id": "hmi01",
+      "name": "HMI01",
+      "type": "hmi",
+      "resolution": "1280x800",
+      "enabled": true,
+      "description": "HMI触摸屏"
+    },
+    {
+      "id": "tbox1",
+      "name": "TBOX1",
+      "type": "gateway",
+      "resolution": "1024x600",
+      "enabled": true,
+      "description": "网关盒子"
+    }
+  ]
+}

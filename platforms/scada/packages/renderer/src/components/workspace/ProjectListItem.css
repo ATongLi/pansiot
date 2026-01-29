@@ -1,0 +1,159 @@
+/**
+ * 最近工程列表项样式
+ * 列表视图，简洁专业
+ */
+
+/* 列表项容器 */
+.project-list-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  position: relative;
+  user-select: none;
+}
+
+.project-list-item:hover {
+  background: var(--color-bg-tertiary);
+  border-color: var(--color-accent-active);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.project-list-item:focus {
+  outline: none;
+  border-color: var(--color-accent-active);
+  box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
+}
+
+.project-list-item--active {
+  background: rgba(33, 150, 243, 0.05);
+  border-color: var(--color-accent-active);
+}
+
+/* 工程图标 */
+.project-list-item__icon {
+  font-size: 32px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+/* 工程信息 */
+.project-list-item__info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.project-list-item__name {
+  font-size: var(--font-size-md);
+  font-weight: 500;  /* 样式规范: 列表项标题使用500 */
+  color: var(--color-text-primary);
+  line-height: 1.4;  /* 新增: 紧凑行高 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.project-list-item__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  line-height: 1.4;  /* 新增: 统一行高 */
+}
+
+.project-list-item__category {
+  padding: 2px 8px;
+  background: rgba(33, 150, 243, 0.1);
+  color: var(--color-accent-active);
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 500;  /* 样式规范: 标签使用500 */
+  line-height: 1.2;  /* 新增: 紧凑行高 */
+  white-space: nowrap;
+}
+
+.project-list-item__time {
+  color: var(--color-text-tertiary);
+  line-height: 1.4;  /* 新增: 统一行高 */
+}
+
+.project-list-item__path {
+  font-size: var(--font-size-sm);
+  font-weight: 400;  /* 新增: 常规字重 */
+  color: var(--color-text-tertiary);
+  line-height: 1.4;  /* 新增: 统一行高 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 加密状态图标 */
+.project-list-item__encrypted {
+  font-size: 16px;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+/* 右键菜单 */
+.project-list-item__context-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 100;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  min-width: 200px;
+  padding: var(--spacing-xs) 0;
+  margin-top: 4px;
+  animation: contextMenuFadeIn 0.1s ease-out;
+}
+
+@keyframes contextMenuFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.context-menu__item {
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--font-size-md);
+  font-weight: 400;  /* 新增: 常规字重 */
+  color: var(--color-text-primary);
+  line-height: 1.4;  /* 新增: 统一行高 */
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+  user-select: none;
+}
+
+.context-menu__item:hover {
+  background: var(--color-bg-tertiary);
+}
+
+.context-menu__item--danger {
+  color: #f44336;
+}
+
+.context-menu__item--danger:hover {
+  background: rgba(244, 67, 54, 0.1);
+}
+
+.context-menu__divider {
+  height: 1px;
+  background: var(--color-border);
+  margin: var(--spacing-xs) 0;
+}

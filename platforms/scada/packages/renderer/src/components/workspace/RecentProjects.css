@@ -1,0 +1,48 @@
+.recent-projects {
+  /* CR-002第四批修正: 移除外层padding，标题已提取到MainContent */
+}
+
+.recent-projects__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.project-card {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.project-card:hover {
+  border-color: var(--color-accent-active);
+  box-shadow: 0 2px 8px var(--color-shadow);
+}
+
+.project-card__icon {
+  font-size: 32px;
+}
+
+.project-card__info {
+  flex: 1;
+}
+
+.project-card__name {
+  font-size: var(--font-size-md);
+  font-weight: 500;  /* 样式规范: 卡片标题使用500 */
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-xs);
+  line-height: 1.4;  /* 新增: 紧凑行高 */
+}
+
+.project-card__date {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  line-height: 1.4;  /* 新增: 统一行高 */
+}

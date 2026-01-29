@@ -1,0 +1,207 @@
+/**
+ * ScreenPanel Component Styles
+ *
+ * FE-006-07: 画面面板（画面列表）
+ */
+
+.screen-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--editor-sidebar-bg);
+}
+
+/* ==========================================
+   Toolbar
+   ========================================== */
+
+.screen-panel__toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  height: 32px;
+  padding: 0 var(--spacing-sm);
+  background: var(--editor-sidebar-header-bg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.screen-panel__toolbar__title {
+  flex: 1;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+/* ==========================================
+   List Container
+   ========================================== */
+
+.screen-panel__list {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.screen-panel__items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm);
+}
+
+/* ==========================================
+   Screen Item
+   ========================================== */
+
+.screen-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  user-select: none;
+}
+
+.screen-item:hover {
+  border-color: var(--color-accent-active);
+  box-shadow: 0 2px 4px var(--color-shadow);
+}
+
+.screen-item:active {
+  transform: translateY(1px);
+}
+
+.screen-item--selected {
+  background: var(--color-bg-tertiary);
+  border-color: var(--color-accent-active);
+}
+
+.screen-item--dragging {
+  opacity: 0.5;
+  cursor: move;
+}
+
+/* Thumbnail */
+.screen-item__thumbnail {
+  width: 48px;
+  height: 36px;
+  flex-shrink: 0;
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.screen-item__thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.screen-item__thumbnail__placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-primary);
+}
+
+.screen-item__thumbnail__icon {
+  font-size: 20px;
+  opacity: 0.5;
+}
+
+/* Info */
+.screen-item__info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.screen-item__name {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.screen-item__meta {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Actions */
+.screen-item__actions {
+  display: flex;
+  gap: var(--spacing-xs);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.screen-item:hover .screen-item__actions {
+  opacity: 1;
+}
+
+.screen-item__action {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.screen-item__action:hover {
+  background: var(--color-bg-tertiary);
+}
+
+.screen-item__action--danger:hover {
+  background: rgba(220, 38, 38, 0.1);
+  color: var(--color-error);
+}
+
+/* ==========================================
+   Status Bar
+   ========================================== */
+
+.screen-panel__status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  padding: 0 var(--spacing-sm);
+  background: var(--editor-sidebar-header-bg);
+  border-top: 1px solid var(--color-border);
+}
+
+.screen-panel__status__text {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+}
+
+/* ==========================================
+   Empty State Hints
+   ========================================== */
+
+.editor-empty-state__hint {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  margin-top: calc(-1 * var(--spacing-sm));
+  opacity: 0.8;
+}

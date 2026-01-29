@@ -1,0 +1,71 @@
+/* CR-002第三批补充: 工程操作卡片式设计 */
+/* CR-002第四批修正: 保持横向布局，调整宽度 */
+
+.action-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 280px));  /* CR-002第四批修正: 固定最大宽度280px */
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+}
+
+.action-card {
+  display: flex;
+  flex-direction: row;  /* CR-002第四批修正: 保持横向布局 */
+  align-items: center;  /* 横向居中对齐 */
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-sm);  /* CR-002第四批修正: 左右小padding让宽度减小，上下大padding增加高度 */
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.action-card:hover {
+  border-color: var(--color-accent-active);
+  box-shadow: 0 2px 8px var(--color-shadow);
+  transform: translateY(-2px);
+}
+
+.action-card:active {
+  transform: translateY(0);
+}
+
+.action-card:focus {
+  outline: 2px solid var(--color-accent-active);
+  outline-offset: 2px;
+}
+
+.action-card__icon {
+  width: 32px;  /* CR-002第四批: 图标保持32px */
+  height: 32px;
+  flex-shrink: 0;
+  color: var(--color-accent-active);
+}
+
+.action-card__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.action-card__content {
+  flex: 1;
+  min-width: 0;
+  text-align: left;  /* CR-002第四批修正: 文字左对齐 */
+}
+
+.action-card__title {
+  font-size: var(--font-size-base);  /* CR-002第四批修正: 标题字号增大 13px → 14px */
+  font-weight: 600;  /* 样式规范: 标题使用600 */
+  color: var(--color-text-primary);
+  margin: 0 0 2px 0;
+  line-height: 1.4;  /* 新增: 紧凑行高 */
+}
+
+.action-card__description {
+  font-size: var(--font-size-xs);  /* 11px */
+  font-weight: 400;  /* 新增: 常规字重 */
+  color: var(--color-text-secondary);
+  margin: 0;
+  line-height: 1.4;  /* 保持: 已有的紧凑行高 */
+}

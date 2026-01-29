@@ -1,0 +1,186 @@
+/**
+ * SubToolbar - Premium Tool Aesthetic
+ *
+ * Design Reference: Figma, VS Code, Linear
+ * - Clean, organized, professional
+ * - Subtle interactions
+ * - Clear visual hierarchy
+ */
+
+.sub-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: var(--editor-sub-toolbar-height);
+  background: #fafbfc;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 6px 12px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  flex-shrink: 0;
+
+  /* Smooth scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.15) transparent;
+}
+
+.sub-toolbar::-webkit-scrollbar {
+  height: 4px;
+}
+
+.sub-toolbar::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 0 12px;
+}
+
+.sub-toolbar::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 2px;
+  transition: background 0.2s ease;
+}
+
+.sub-toolbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/* ==========================================
+   分隔符
+   ========================================== */
+
+.toolbar-separator {
+  width: 1px;
+  height: 18px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0, 0, 0, 0.08) 30%,
+    rgba(0, 0, 0, 0.08) 70%,
+    transparent
+  );
+  margin: 0 8px;
+  flex-shrink: 0;
+}
+
+/* ==========================================
+   子工具栏按钮
+   ========================================== */
+
+.toolbar-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  padding: 0 13px;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+  position: relative;
+  user-select: none;
+}
+
+.toolbar-button:hover {
+  background: rgba(0, 0, 0, 0.04);
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.toolbar-button:active {
+  transform: scale(0.97);
+  background: rgba(0, 0, 0, 0.06);
+}
+
+/* Disabled state */
+.toolbar-button--disabled,
+.toolbar-button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.toolbar-button--disabled:hover,
+.toolbar-button:disabled:hover {
+  background: transparent;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.toolbar-button--disabled:active,
+.toolbar-button:disabled:active {
+  transform: none;
+  background: transparent;
+}
+
+/* Label styling */
+.toolbar-button__label {
+  font-size: 13px;
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* Keyboard shortcut tooltip */
+.toolbar-button[data-shortcut]::after {
+  content: attr(data-shortcut);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-4px);
+  padding: 4px 8px;
+  background: rgba(0, 0, 0, 0.85);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 100;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.toolbar-button[data-shortcut]:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ==========================================
+   Responsive Design
+   ========================================== */
+
+@media (max-width: 1200px) {
+  .sub-toolbar {
+    padding: 6px 10px;
+  }
+
+  .toolbar-button {
+    padding: 0 9px;
+  }
+
+  .toolbar-separator {
+    margin: 0 6px;
+  }
+}
+
+@media (max-width: 900px) {
+  .sub-toolbar {
+    padding: 6px 8px;
+    gap: 2px;
+  }
+
+  .toolbar-button {
+    height: 32px;
+    padding: 0 10px;
+    font-size: 12px;
+  }
+
+  .toolbar-separator {
+    margin: 0 4px;
+  }
+}

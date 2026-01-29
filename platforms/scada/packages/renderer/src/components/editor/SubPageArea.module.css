@@ -1,0 +1,18 @@
+/**
+ * SubPageArea 子页面内容区样式
+ */
+
+.sub-page-area {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg-primary);
+}
+
+.sub-page-area__canvas-container {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}

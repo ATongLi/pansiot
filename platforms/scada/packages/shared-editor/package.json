@@ -1,0 +1,38 @@
+{
+  "name": "@pansiot/shared-editor",
+  "version": "1.0.0",
+  "description": "Shared editor core used by Scada and Cloud platforms",
+  "main": "./dist/pansiot-editor.umd.cjs",
+  "module": "./dist/pansiot-editor.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/pansiot-editor.js",
+      "require": "./dist/pansiot-editor.umd.cjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./components": "./dist/components/index.js"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "mobx": "^6.12.0",
+    "mobx-react-lite": "^4.0.7"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.2",
+    "vite-plugin-dts": "^3.9.1"
+  }
+}

@@ -1,0 +1,334 @@
+/**
+ * 新建工程对话框样式
+ * 工业软件风格，简洁专业
+ */
+
+/* 对话框遮罩层 */
+.new-project-dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.15s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 对话框容器 */
+.new-project-dialog {
+  background: var(--color-bg-secondary);
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  width: 600px;
+  max-width: 90vw;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.2s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* 头部 */
+.new-project-dialog__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.new-project-dialog__title {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.new-project-dialog__close {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.new-project-dialog__close:hover {
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-primary);
+}
+
+/* 表单内容 */
+.new-project-dialog__body {
+  padding: var(--spacing-lg);
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* 表单组 */
+.form-group {
+  margin-bottom: var(--spacing-md);
+}
+
+.form-group__label {
+  display: block;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.form-group__required {
+  color: #f44336;
+  margin-left: 2px;
+}
+
+.form-group__input,
+.form-group__textarea,
+.form-group__select {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--font-size-md);
+  color: var(--color-text-primary);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  transition: all var(--transition-fast);
+  font-family: var(--font-family-base);
+}
+
+.form-group__input:focus,
+.form-group__textarea:focus,
+.form-group__select:focus {
+  outline: none;
+  border-color: var(--color-accent-active);
+  box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
+}
+
+.form-group__input--error {
+  border-color: #f44336;
+}
+
+.form-group__input--error:focus {
+  box-shadow: 0 0 0 2px rgba(244, 67, 54, 0.1);
+}
+
+.form-group__textarea {
+  resize: vertical;
+  min-height: 72px;
+}
+
+.form-group__select-wrapper {
+  position: relative;
+}
+
+.form-group__select {
+  appearance: none;
+  padding-right: var(--spacing-xl);
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><path fill="%23666" d="M6 9L1 4h10z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  cursor: pointer;
+}
+
+/* 自定义分类输入 */
+.form-group__custom-category {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
+}
+
+.form-group__custom-category-btn {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--color-accent-active);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color var(--transition-fast);
+}
+
+.form-group__custom-category-btn:hover {
+  background: var(--color-accent-hover);
+}
+
+/* 路径选择器 */
+.form-group__path-selector {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.form-group__path-selector .form-group__input {
+  flex: 1;
+}
+
+.form-group__browse-btn {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+}
+
+.form-group__browse-btn:hover {
+  background: var(--color-bg-tertiary);
+  border-color: var(--color-accent-active);
+}
+
+/* 复选框 */
+.form-group__checkbox {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  cursor: pointer;
+  user-select: none;
+}
+
+.form-group__checkbox input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.form-group__checkbox span {
+  font-size: var(--font-size-md);
+  color: var(--color-text-primary);
+}
+
+/* 密码输入 */
+.form-group__password-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.form-group__password-input .form-group__input {
+  padding-right: 40px;
+}
+
+.form-group__password-toggle {
+  position: absolute;
+  right: var(--spacing-sm);
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius);
+  transition: background-color var(--transition-fast);
+}
+
+.form-group__password-toggle:hover {
+  background: var(--color-bg-tertiary);
+}
+
+/* 错误提示 */
+.form-group__error {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: #f44336;
+  margin-top: 4px;
+}
+
+/* 底部按钮 */
+.new-project-dialog__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-top: 1px solid var(--color-border);
+}
+
+/* 按钮样式 */
+.btn {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: var(--font-size-md);
+  font-weight: 500;
+  border-radius: var(--border-radius);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  min-width: 80px;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn--secondary {
+  background: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+}
+
+.btn--secondary:hover:not(:disabled) {
+  background: var(--color-bg-tertiary);
+  border-color: var(--color-accent-active);
+}
+
+.btn--primary {
+  background: var(--color-accent-active);
+  color: white;
+}
+
+.btn--primary:hover:not(:disabled) {
+  background: var(--color-accent-hover);
+}
+
+/* 滚动条样式 */
+.new-project-dialog__body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.new-project-dialog__body::-webkit-scrollbar-track {
+  background: var(--color-bg-primary);
+}
+
+.new-project-dialog__body::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+.new-project-dialog__body::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-tertiary);
+}

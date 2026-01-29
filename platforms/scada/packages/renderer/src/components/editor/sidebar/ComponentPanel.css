@@ -1,0 +1,156 @@
+/**
+ * ComponentPanel Component Styles
+ *
+ * FE-006-08: 组件面板（组件库）
+ */
+
+.component-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--editor-sidebar-bg);
+}
+
+/* ==========================================
+   Category Tabs
+   ========================================== */
+
+.component-panel__tabs {
+  display: flex;
+  background: var(--color-bg-primary);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.component-panel__tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  background: var(--editor-tab-bg);
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.component-panel__tab:hover {
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-primary);
+}
+
+.component-panel__tab--active {
+  background: var(--editor-tab-bg-active);
+  color: var(--color-text-primary);
+  border-bottom-color: var(--editor-tab-border-active);
+}
+
+/* ==========================================
+   Search Box
+   ========================================== */
+
+.component-panel__search {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm);
+  background: var(--editor-sidebar-header-bg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.component-panel__search__input {
+  flex: 1;
+  height: 24px;
+  padding: 0 var(--spacing-sm);
+  font-size: var(--font-size-xs);
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  background: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+}
+
+.component-panel__search__input::placeholder {
+  color: var(--color-text-tertiary);
+}
+
+.component-panel__search__input:focus {
+  outline: none;
+  border-color: var(--color-accent-active);
+  box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
+}
+
+.component-panel__search__clear {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 2px;
+  font-size: 18px;
+  color: var(--color-text-tertiary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.component-panel__search__clear:hover {
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-primary);
+}
+
+/* ==========================================
+   Grid Container
+   ========================================== */
+
+.component-panel__grid {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* ==========================================
+   Status Bar
+   ========================================== */
+
+.component-panel__status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  padding: 0 var(--spacing-sm);
+  background: var(--editor-sidebar-header-bg);
+  border-top: 1px solid var(--color-border);
+}
+
+.component-panel__status__text {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+}
+
+/* ==========================================
+   Empty State
+   ========================================== */
+
+.component-panel__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: var(--spacing-md);
+  color: var(--color-text-tertiary);
+}
+
+.component-panel__empty__icon {
+  font-size: 48px;
+  opacity: 0.5;
+}
+
+.component-panel__empty__text {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+}

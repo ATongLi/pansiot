@@ -1,0 +1,151 @@
+/**
+ * SubPageTabs Component Styles
+ *
+ * FE-006-12: 子页面标签栏
+ */
+
+.sub-page-tabs {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  height: 100%;
+  padding: 0 var(--spacing-sm);
+}
+
+/* ==========================================
+   Tabs List
+   ========================================== */
+
+.sub-page-tabs__list {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  overflow-x: auto;
+  flex: 1;
+  scrollbar-width: none; /* Firefox */
+}
+
+.sub-page-tabs__list::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+/* ==========================================
+   Tab
+   ========================================== */
+
+.sub-page-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  height: 24px;
+  padding: 0 var(--spacing-md);
+  background: var(--editor-tab-bg);
+  border: 1px solid var(--editor-tab-border);
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.sub-page-tab:hover {
+  background: var(--color-bg-tertiary);
+  border-color: var(--color-accent-active);
+}
+
+.sub-page-tab--active {
+  background: var(--editor-tab-bg-active);
+  color: var(--color-text-primary);
+  border-color: var(--editor-tab-border-active);
+  border-bottom-color: transparent;
+}
+
+.sub-page-tab--dragging {
+  opacity: 0.5;
+  cursor: move;
+}
+
+/* Label */
+.sub-page-tab__label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sub-page-tab__modified {
+  color: var(--color-warning);
+  margin-left: var(--spacing-xs);
+}
+
+/* Close Button */
+.sub-page-tab__close {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  color: var(--color-text-tertiary);
+  transition: all var(--transition-fast);
+}
+
+.sub-page-tab__close:hover {
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-primary);
+}
+
+.sub-page-tab__close:active {
+  background: rgba(220, 38, 38, 0.1);
+  color: var(--color-error);
+}
+
+/* ==========================================
+   Add Button
+   ========================================== */
+
+.sub-page-tabs__add {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  font-size: 18px;
+  color: var(--color-text-tertiary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.sub-page-tabs__add:hover {
+  background: var(--color-bg-tertiary);
+  border-color: var(--color-border);
+  color: var(--color-text-primary);
+}
+
+.sub-page-tabs__add:active {
+  transform: translateY(1px);
+}
+
+/* ==========================================
+   Responsive
+   ========================================== */
+
+@media (max-width: 900px) {
+  .sub-page-tabs__list {
+    gap: 2px;
+  }
+
+  .sub-page-tab {
+    padding: 0 var(--spacing-sm);
+    min-width: 60px;
+  }
+
+  .sub-page-tab__label {
+    max-width: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

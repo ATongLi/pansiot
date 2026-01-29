@@ -1,0 +1,98 @@
+{
+  "pages": [
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "启动页"
+      }
+    },
+    {
+      "path": "pages/auth/login/index",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "登录"
+      }
+    },
+    {
+      "path": "pages/tabbar/workspace",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "工作台"
+      }
+    },
+    {
+      "path": "pages/tabbar/device",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "设备"
+      }
+    },
+    {
+      "path": "pages/tabbar/dashboard",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "看板"
+      }
+    },
+    {
+      "path": "pages/tabbar/message",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "消息"
+      }
+    },
+    {
+      "path": "pages/tabbar/profile",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "我的"
+      }
+    }
+  ],
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#007aff",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/tabbar/workspace",
+        "iconPath": "static/icons/tabbar/workspace.png",
+        "selectedIconPath": "static/icons/tabbar/workspace-active.png",
+        "text": "工作台"
+      },
+      {
+        "pagePath": "pages/tabbar/device",
+        "iconPath": "static/icons/tabbar/device.png",
+        "selectedIconPath": "static/icons/tabbar/device-active.png",
+        "text": "设备"
+      },
+      {
+        "pagePath": "pages/tabbar/dashboard",
+        "iconPath": "static/icons/tabbar/dashboard.png",
+        "selectedIconPath": "static/icons/tabbar/dashboard-active.png",
+        "text": "看板"
+      },
+      {
+        "pagePath": "pages/tabbar/message",
+        "iconPath": "static/icons/tabbar/message.png",
+        "selectedIconPath": "static/icons/tabbar/message-active.png",
+        "text": "消息"
+      },
+      {
+        "pagePath": "pages/tabbar/profile",
+        "iconPath": "static/icons/tabbar/profile.png",
+        "selectedIconPath": "static/icons/tabbar/profile-active.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "PansIot",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "uniIdRouter": {}
+}

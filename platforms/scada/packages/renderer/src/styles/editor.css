@@ -1,0 +1,736 @@
+/**
+ * PanTools Scada Editor Styles
+ *
+ * 工程编辑器专用样式
+ * FE-006: 工程编辑器整体布局与组件架构
+ *
+ * Layout Structure:
+ * ┌────────────────────────────────────────────────────────────┐
+ * │ Top Toolbar (32px)                                          │
+ * ├────────────────────────────────────────────────────────────┤
+ * │ Sub Toolbar (64px)                                          │
+ * ├─────────┬──────────────────────────────────┬───────────────┤
+ * │         │ Sub Page Tabs (32px)             │               │
+ * │ Left    ├──────────────────────────────────┤ Right         │
+ * │ Sidebar │                                  │ Sidebar       │
+ * │ (280px) │        Canvas Area               │ (280px)       │
+ * │         │        (flex: 1)                 │               │
+ * │         │                                  │               │
+ * ├─────────┴──────────────────────────────────┴───────────────┤
+ * │ Status Bar (24px)                                           │
+ * └────────────────────────────────────────────────────────────┘
+ */
+
+/* ============================================
+   Editor CSS Variables Extension
+   ============================================ */
+
+:root {
+  /* === Editor Dimensions === */
+  --editor-top-toolbar-height: 32px;
+  --editor-sub-toolbar-height: 64px;
+  --editor-sub-tabs-height: 32px;
+  --editor-left-sidebar-width: 280px;
+  --editor-right-sidebar-width: 280px;
+  --editor-statusbar-height: 24px;
+
+  /* === Editor Colors === */
+  --editor-bg-canvas: #f0f0f0;
+  --editor-bg-canvas-dots: #d0d0d0;
+  --editor-border-toolbar: #d0d0d0;
+  --editor-border-sidebar: #e0e0e0;
+  --editor-border-tabs: #d0d0d0;
+
+  /* === Editor Tab Colors === */
+  --editor-tab-bg: var(--color-bg-primary);
+  --editor-tab-bg-active: var(--color-bg-secondary);
+  --editor-tab-border: var(--color-border);
+  --editor-tab-border-active: var(--color-accent-active);
+
+  /* === Editor Sidebar === */
+  --editor-sidebar-bg: var(--color-bg-secondary);
+  --editor-sidebar-header-bg: var(--color-bg-topbar);
+
+  /* === Editor Tree View === */
+  --editor-tree-item-height: 28px;
+  --editor-tree-indent: 16px;
+  --editor-tree-icon-size: 16px;
+
+  /* === Editor Component Panel === */
+  --editor-component-item-size: 80px;
+  --editor-component-gap: 8px;
+
+  /* === Editor Canvas === */
+  --editor-canvas-min-width: 400px;
+  --editor-canvas-min-height: 300px;
+  --editor-canvas-grid-size: 20px;
+
+  /* === Editor Status Bar === */
+  --editor-statusbar-bg: var(--color-bg-topbar);
+  --editor-statusbar-text: var(--color-text-tertiary);
+  --editor-statusbar-border: var(--color-border);
+
+  /* === Editor Layer Panel === */
+  --editor-layer-item-height: 32px;
+  --editor-layer-thumb-size: 24px;
+
+  /* === Editor Property Panel === */
+  --editor-property-label-width: 80px;
+  --editor-property-input-height: 24px;
+}
+
+/* ============================================
+   Editor Layout Structure
+   ============================================ */
+
+.editor-layout {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background: var(--color-bg-primary);
+  overflow: hidden;
+}
+
+/* Top Toolbar */
+.editor__top-toolbar {
+  height: var(--editor-top-toolbar-height);
+  flex-shrink: 0;
+  background: var(--color-bg-secondary);
+  border-bottom: 1px solid var(--editor-border-toolbar);
+  display: flex;
+  align-items: center;
+  padding: 0 var(--spacing-md);
+}
+
+/* Sub Toolbar */
+.editor__sub-toolbar {
+  height: var(--editor-sub-toolbar-height);
+  flex-shrink: 0;
+  background: var(--color-bg-secondary);
+  border-bottom: 1px solid var(--editor-border-toolbar);
+  display: flex;
+  align-items: center;
+  padding: 0 var(--spacing-md);
+}
+
+/* Main Content Area (Left Sidebar + Canvas + Right Sidebar) */
+.editor__main-content {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+/* Sub Page Tabs */
+.editor__sub-tabs {
+  height: var(--editor-sub-tabs-height);
+  flex-shrink: 0;
+  background: var(--editor-bg-canvas);
+  border-bottom: 1px solid var(--editor-border-tabs);
+  display: flex;
+  align-items: center;
+  padding: 0 var(--spacing-sm);
+}
+
+/* Left Sidebar */
+.editor__left-sidebar {
+  width: var(--editor-left-sidebar-width);
+  flex-shrink: 0;
+  background: var(--editor-sidebar-bg);
+  border-right: 1px solid var(--editor-border-sidebar);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Canvas Area */
+.editor__canvas-area {
+  flex: 1;
+  background: var(--editor-bg-canvas);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Right Sidebar */
+.editor__right-sidebar {
+  width: var(--editor-right-sidebar-width);
+  flex-shrink: 0;
+  background: var(--editor-sidebar-bg);
+  border-left: 1px solid var(--editor-border-sidebar);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Status Bar */
+.editor__statusbar {
+  height: var(--editor-statusbar-height);
+  flex-shrink: 0;
+  background: var(--editor-statusbar-bg);
+  border-top: 1px solid var(--editor-statusbar-border);
+  display: flex;
+  align-items: center;
+  padding: 0 var(--spacing-md);
+}
+
+/* ============================================
+   Editor Components - BEM Naming Convention
+   ============================================ */
+
+/* --- Toolbar Buttons --- */
+.toolbar-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  height: 24px;
+  padding: 0 var(--spacing-sm);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.toolbar-button:hover {
+  background: var(--color-bg-tertiary);
+  border-color: var(--color-border);
+}
+
+.toolbar-button:active {
+  transform: translateY(1px);
+}
+
+.toolbar-button--icon-only {
+  width: 24px;
+  padding: 0;
+}
+
+.toolbar-button--primary {
+  background: var(--color-accent-active);
+  color: white;
+}
+
+.toolbar-button--primary:hover {
+  background: var(--color-accent-hover);
+}
+
+.toolbar-separator {
+  width: 1px;
+  height: 20px;
+  background: var(--color-border);
+  margin: 0 var(--spacing-sm);
+}
+
+/* --- Sidebar Tabs --- */
+.sidebar-tabs {
+  display: flex;
+  background: var(--color-bg-primary);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.sidebar-tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  background: var(--editor-tab-bg);
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.sidebar-tab:hover {
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-primary);
+}
+
+.sidebar-tab--active {
+  background: var(--editor-tab-bg-active);
+  color: var(--color-text-primary);
+  border-bottom-color: var(--editor-tab-border-active);
+}
+
+/* --- Sidebar Panel --- */
+.sidebar-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.sidebar-panel--hidden {
+  display: none;
+}
+
+.sidebar-panel__header {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 var(--spacing-md);
+  background: var(--editor-sidebar-header-bg);
+  border-bottom: 1px solid var(--color-border);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.sidebar-panel__content {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--spacing-sm);
+}
+
+/* --- Tree View (Project Panel) --- */
+.tree-view {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.tree-item {
+  display: flex;
+  align-items: center;
+  height: var(--editor-tree-item-height);
+  padding: 0 var(--spacing-sm);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.tree-item:hover {
+  background: var(--color-bg-hover);
+}
+
+.tree-item--selected {
+  background: var(--color-bg-tertiary);
+}
+
+.tree-item__icon {
+  width: var(--editor-tree-icon-size);
+  height: var(--editor-tree-icon-size);
+  margin-right: var(--spacing-xs);
+  color: var(--color-text-tertiary);
+  flex-shrink: 0;
+}
+
+.tree-item__label {
+  flex: 1;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tree-item__toggle {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: var(--spacing-xs);
+  color: var(--color-text-tertiary);
+  cursor: pointer;
+}
+
+.tree-item--expanded .tree-item__toggle {
+  transform: rotate(90deg);
+}
+
+.tree-item__children {
+  padding-left: var(--editor-tree-indent);
+}
+
+/* --- Component Grid (Component Panel) --- */
+.component-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--editor-component-item-size), 1fr));
+  gap: var(--editor-component-gap);
+}
+
+.component-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.component-item:hover {
+  border-color: var(--color-accent-active);
+  box-shadow: 0 2px 4px var(--color-shadow);
+}
+
+.component-item:active {
+  transform: translateY(1px);
+}
+
+.component-item__icon {
+  width: 32px;
+  height: 32px;
+  color: var(--color-text-tertiary);
+}
+
+.component-item__label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+
+/* --- Sub Page Tabs --- */
+.sub-page-tabs {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  overflow-x: auto;
+}
+
+.sub-page-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  height: 24px;
+  padding: 0 var(--spacing-md);
+  background: var(--editor-tab-bg);
+  border: 1px solid var(--editor-tab-border);
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.sub-page-tab:hover {
+  background: var(--color-bg-tertiary);
+  border-color: var(--color-accent-active);
+}
+
+.sub-page-tab--active {
+  background: var(--editor-tab-bg-active);
+  color: var(--color-text-primary);
+  border-color: var(--editor-tab-border-active);
+  border-bottom-color: transparent;
+}
+
+.sub-page-tab__close {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  color: var(--color-text-tertiary);
+  transition: all var(--transition-fast);
+}
+
+.sub-page-tab__close:hover {
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-primary);
+}
+
+/* --- Canvas --- */
+.canvas {
+  flex: 1;
+  background: var(--editor-bg-canvas);
+  position: relative;
+  overflow: hidden;
+}
+
+.canvas__content {
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(circle, var(--editor-bg-canvas-dots) 1px, transparent 1px);
+  background-size: var(--editor-canvas-grid-size) var(--editor-canvas-grid-size);
+  position: relative;
+}
+
+.canvas__viewport {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: 0 0;
+}
+
+/* --- Layer Panel --- */
+.layer-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.layer-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  height: var(--editor-layer-item-height);
+  padding: 0 var(--spacing-sm);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.layer-item:hover {
+  border-color: var(--color-accent-active);
+}
+
+.layer-item--selected {
+  border-color: var(--color-accent-active);
+  background: var(--color-bg-tertiary);
+}
+
+.layer-item__thumb {
+  width: var(--editor-layer-thumb-size);
+  height: var(--editor-layer-thumb-size);
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.layer-item__label {
+  flex: 1;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.layer-item__visibility {
+  width: 16px;
+  height: 16px;
+  color: var(--color-text-tertiary);
+  cursor: pointer;
+}
+
+.layer-item__visibility--hidden {
+  opacity: 0.4;
+}
+
+/* --- Property Panel --- */
+.property-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.property-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.property-group__title {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  padding-bottom: var(--spacing-xs);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.property-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.property-row__label {
+  width: var(--editor-property-label-width);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  flex-shrink: 0;
+}
+
+.property-row__input {
+  flex: 1;
+  height: var(--editor-property-input-height);
+  padding: 2px var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  background: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+}
+
+.property-row__input:focus {
+  outline: none;
+  border-color: var(--color-accent-active);
+  box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
+}
+
+/* --- Status Bar --- */
+.statusbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+}
+
+.statusbar__section {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.statusbar__item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: var(--font-size-xs);
+  color: var(--editor-statusbar-text);
+}
+
+.statusbar__item--interactive {
+  cursor: pointer;
+  padding: 2px var(--spacing-xs);
+  border-radius: 2px;
+  transition: background-color var(--transition-fast);
+}
+
+.statusbar__item--interactive:hover {
+  background: var(--color-bg-hover);
+}
+
+.statusbar__zoom-control {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.statusbar__zoom-button {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.statusbar__zoom-button:hover {
+  background: var(--color-bg-hover);
+}
+
+.statusbar__zoom-label {
+  font-size: var(--font-size-xs);
+  color: var(--editor-statusbar-text);
+  min-width: 40px;
+  text-align: center;
+}
+
+/* ============================================
+   Utility Classes
+   ============================================ */
+
+.editor-scrollbar {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+.editor-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.editor-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.editor-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+.editor-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-tertiary);
+}
+
+/* Empty State */
+.editor-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: var(--spacing-md);
+  color: var(--color-text-tertiary);
+}
+
+.editor-empty-state__icon {
+  font-size: 48px;
+  opacity: 0.5;
+}
+
+.editor-empty-state__text {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+}
+
+/* Loading State */
+.editor-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.editor-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--color-bg-tertiary);
+  border-top-color: var(--color-accent-active);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================
+   Responsive Design (Optional)
+   ============================================ */
+
+@media (max-width: 1200px) {
+  :root {
+    --editor-left-sidebar-width: 240px;
+    --editor-right-sidebar-width: 240px;
+  }
+}
+
+@media (max-width: 900px) {
+  :root {
+    --editor-left-sidebar-width: 200px;
+    --editor-right-sidebar-width: 200px;
+  }
+
+  .editor__right-sidebar {
+    display: none;
+  }
+}

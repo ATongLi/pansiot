@@ -1,0 +1,73 @@
+/**
+ * ProjectPanel Component Styles
+ *
+ * FE-006-06: 工程面板（工程树形结构）
+ */
+
+.project-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--editor-sidebar-bg);
+}
+
+/* ==========================================
+   Toolbar
+   ========================================== */
+
+.project-panel__toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  height: 32px;
+  padding: 0 var(--spacing-sm);
+  background: var(--editor-sidebar-header-bg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.project-panel__toolbar__title {
+  flex: 1;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+/* ==========================================
+   Tree Container
+   ========================================== */
+
+.project-panel__tree {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* ==========================================
+   Status Bar
+   ========================================== */
+
+.project-panel__status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  padding: 0 var(--spacing-sm);
+  background: var(--editor-sidebar-header-bg);
+  border-top: 1px solid var(--color-border);
+}
+
+.project-panel__status__text {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+}
+
+/* ==========================================
+   Empty State Hints
+   ========================================== */
+
+.editor-empty-state__hint {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  margin-top: calc(-1 * var(--spacing-sm));
+  opacity: 0.8;
+}

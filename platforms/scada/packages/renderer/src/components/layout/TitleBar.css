@@ -1,0 +1,429 @@
+/**
+ * 自定义标题栏样式
+ * 浮动在窗口顶部，不占用页面内容空间（类似原生标题栏）
+ * 参考 WPS Office 设计风格
+ */
+
+.title-bar {
+  position: fixed; /* 固定在窗口顶部，不占用文档流 */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999; /* 确保在最上层 */
+
+  display: flex;
+  align-items: center;
+  height: 42px; /* 标题栏高度 - 调整为 42px */
+  background: #f0f0f0; /* 标题栏使用浅灰色，为标签提供容器感 */
+  border-bottom: 1px solid var(--color-border); /* 标题栏底边框 */
+  user-select: none; /* 禁止选择文字 */
+  -webkit-app-region: drag; /* 整个标题栏可拖动窗口 */
+}
+
+/* Logo图标区域 - 与侧边栏完美对齐（60px） */
+.title-bar__logo {
+  width: 60px; /* 与侧边栏宽度完全一致 */
+  height: 42px; /* 与标题栏高度一致 */
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Logo居中 */
+  flex-shrink: 0;
+  color: var(--color-accent-active);
+  -webkit-app-region: drag; /* 可拖动 */
+  position: relative;
+  cursor: default;
+}
+
+/* Logo图标与标题之间的分隔线（可选，增强视觉分隔） */
+.title-bar__logo::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 24px;
+  background: var(--color-border);
+  opacity: 0.6;
+}
+
+.title-bar__logo svg {
+  width: 24px; /* Logo图标尺寸 */
+  height: 24px;
+  display: block;
+  filter: drop-shadow(0 1px 2px rgba(33, 150, 243, 0.2)); /* 轻微阴影，增强层次感 */
+  transition: filter var(--transition-fast);
+}
+
+.title-bar__logo:hover svg {
+  filter: drop-shadow(0 2px 4px rgba(33, 150, 243, 0.3)); /* 悬停时增强阴影 */
+}
+
+/* 应用标题 */
+.title-bar__app-title {
+  font-size: var(--font-size-base); /* 15px */
+  font-weight: 600;
+  color: var(--color-text-primary);
+  line-height: 1.4;
+  padding: 0 var(--spacing-md) 0 var(--spacing-md); /* 左右间距，避开分隔线 */
+  white-space: nowrap;
+  flex-shrink: 0;
+  -webkit-app-region: drag; /* 可拖动 */
+}
+
+/* 窗口变窄时隐藏标题文字 */
+@media (max-width: 768px) {
+  .title-bar__app-title {
+    display: none;
+  }
+
+  .title-bar__logo {
+    width: 60px; /* Logo区域保持60px宽度 */
+  }
+
+  .title-bar__logo::after {
+    display: none; /* 窄屏时隐藏分隔线 */
+  }
+}
+
+/* 标签页区域 */
+.title-bar__tabs-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-app-region: no-drag; /* 标签页不可拖动窗口 */
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+.title-bar__tabs-section::-webkit-scrollbar {
+  height: 3px;
+}
+
+.title-bar__tabs-section::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.title-bar__tabs-section::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 2px;
+}
+
+.title-bar__tabs {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 0 var(--spacing-sm);
+}
+
+.title-bar__tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 10px 0 10px;
+  min-width: 120px;
+  max-width: 200px;
+  height: 38px;
+  background: #e0e0e0; /* 未选中：比标题栏更深的灰色 */
+  border: none;
+  border-radius: 6px 6px 0 0;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+  margin: 3px 3px 0 3px;
+}
+
+/* 标签图标 */
+.title-bar__tab-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  color: var(--color-text-tertiary);
+  transition: all 0.2s ease;
+  opacity: 0.6; /* 未选中标签图标更淡 */
+}
+
+.title-bar__tab-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* 选中标签图标 - 更鲜艳 */
+.title-bar__tab--active .title-bar__tab-icon {
+  color: var(--color-accent-active);
+  opacity: 1;
+}
+
+/* 未选中标签的图标颜色 */
+.title-bar__tab:not(.title-bar__tab--active) .title-bar__tab-icon {
+  color: var(--color-text-tertiary);
+  opacity: 0.5;
+}
+
+/* 首页图标特殊样式 - 简化扁平 */
+.title-bar__tab-icon--home {
+  width: 18px;
+  height: 18px;
+}
+
+.title-bar__tab-icon--home svg {
+  width: 16px;
+  height: 16px;
+  filter: none;
+  transition: all 0.2s ease;
+}
+
+/* 未选中标签的首页图标 - 柔和的灰色 */
+.title-bar__tab:not(.title-bar__tab--active) .title-bar__tab-icon--home svg {
+  color: var(--color-text-secondary);
+  opacity: 0.7;
+}
+
+/* 悬浮时首页图标微微放大 */
+.title-bar__tab:hover .title-bar__tab-icon--home svg {
+  transform: scale(1.03);
+  opacity: 0.85;
+}
+
+/* 标签标题 - 优化排版 */
+.title-bar__tab-title {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  padding-top: 1px; /* 微调垂直对齐 */
+  min-width: 0; /* 允许 flex 子元素收缩 */
+  color: var(--color-text-secondary);
+  opacity: 0.8; /* 未选中标签文字更淡 */
+}
+
+/* 选中标签文字 - 更清晰 */
+.title-bar__tab--active .title-bar__tab-title {
+  color: var(--color-text-primary);
+  opacity: 1;
+  font-weight: 600;
+}
+
+/* 未选中标签悬浮时文字稍微加深 */
+.title-bar__tab:hover:not(.title-bar__tab--active) .title-bar__tab-title {
+  opacity: 1;
+}
+
+/* 关闭按钮 - 互联网工具风格的圆形设计 */
+.title-bar__tab-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  margin-left: 6px;
+  flex-shrink: 0;
+  border-radius: 50%; /* 圆形按钮 */
+  transition: all 0.15s ease;
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+/* 标签悬浮或选中时显示关闭按钮 */
+.title-bar__tab:hover .title-bar__tab-close,
+.title-bar__tab--active .title-bar__tab-close {
+  opacity: 0.6;
+  transform: scale(1);
+}
+
+.title-bar__tab-close svg {
+  width: 10px;
+  height: 10px;
+  color: var(--color-text-tertiary);
+  transition: all 0.15s ease;
+}
+
+/* 关闭按钮悬浮状态 - VS Code 风格 */
+.title-bar__tab-close:hover {
+  opacity: 1 !important;
+  background: rgba(0, 0, 0, 0.08); /* 中性灰色背景 */
+  transform: scale(1.1);
+}
+
+.title-bar__tab-close:hover svg {
+  color: var(--color-text-primary);
+}
+
+/* 未选中标签的关闭按钮悬浮 - 略深的背景 */
+.title-bar__tab:not(.title-bar__tab--active) .title-bar__tab-close:hover {
+  background: rgba(0, 0, 0, 0.12);
+}
+
+/* 选中标签的关闭按钮悬浮 - 更清晰的背景 */
+.title-bar__tab--active .title-bar__tab-close:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+/* 未选中标签的微妙效果 */
+.title-bar__tab::before {
+  display: none;
+}
+
+/* 未选中标签悬浮 - 加深背景 */
+.title-bar__tab:hover:not(.title-bar__tab--active) {
+  background: #d5d5d5; /* 悬浮时进一步加深，表明"可点击" */
+}
+
+/* 选中标签悬浮 - 背景不变，保持稳定的选中状态 */
+.title-bar__tab--active:hover {
+  background: #ffffff; /* 保持白色背景 */
+}
+
+.title-bar__tab:hover::before {
+  display: none;
+}
+
+/* 选中标签 - 纯扁平设计，与内容页完美融合 */
+.title-bar__tab--active {
+  background: #ffffff; /* 纯白背景，突出于灰色标题栏 */
+  border: none;
+  border-bottom: 1px solid transparent;
+  border-radius: 6px 6px 0 0;
+  color: var(--color-text-primary);
+  font-weight: 600;
+  z-index: 2;
+  box-shadow: none; /* 移除阴影，完全扁平 */
+  margin: 3px 3px 0 3px;
+}
+
+/* 选中标签的顶部光晕效果 - 移除，更扁平 */
+.title-bar__tab--active::before {
+  display: none;
+}
+
+/* 扩展功能区域 */
+.title-bar__extensions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding-right: var(--spacing-sm);
+  -webkit-app-region: no-drag; /* 扩展功能区域不可拖动 */
+  flex-shrink: 0; /* 不收缩 */
+}
+
+/* 扩展功能按钮 */
+.title-bar__ext-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xs);
+  height: 32px;
+  width: 32px;
+  border: 1px solid transparent;
+  background: transparent;
+  border-radius: var(--border-radius);
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.title-bar__ext-button:hover {
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-primary);
+}
+
+.title-bar__ext-icon {
+  font-size: var(--font-size-base); /* 15px */
+  line-height: 1;
+}
+
+/* 窗口控制区域 */
+.title-bar__window-controls {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  flex-shrink: 0;
+  -webkit-app-region: no-drag; /* 窗口控制按钮不可拖动 */
+}
+
+/* 确保 WindowControls 组件的按钮正确显示 */
+.title-bar .window-controls {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.title-bar .window-controls__button {
+  width: 46px;
+  height: 100%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.title-bar .window-controls__button:hover {
+  background: var(--color-bg-tertiary);
+}
+
+.title-bar .window-controls__button--close:hover {
+  background: #e81123;
+  color: white;
+}
+
+.title-bar__control {
+  width: 46px;
+  height: 100%;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+  color: var(--color-text-primary);
+}
+
+.title-bar__control:hover {
+  background: var(--color-bg-tertiary);
+}
+
+.title-bar__control--close:hover {
+  background: #e81123; /* Windows关闭按钮红色 */
+  color: white;
+}
+
+.title-bar__control svg {
+  width: 10px;
+  height: 10px;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .title-bar {
+    height: 42px; /* 保持 42px */
+  }
+
+  .title-bar__app-title {
+    display: none; /* 小屏幕隐藏应用标题 */
+  }
+
+  .title-bar__ext-text {
+    display: none; /* 小屏幕隐藏按钮文字 */
+  }
+
+  .title-bar__tab {
+    min-width: 60px;
+    padding: 0 var(--spacing-xs);
+  }
+
+  .title-bar__tab-title {
+    font-size: var(--font-size-xs); /* 12px */
+  }
+}

@@ -1,0 +1,12 @@
+/**
+ * MainContent 主内容区样式
+ * IMP-009: 简化为 HomePage 组件的容器
+ * 修复：移除 calc(100vh - topbar-height)，直接使用 flex: 1
+ */
+
+.main-content {
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+  background: var(--color-bg-primary); /* 使用统一的颜色变量 */
+}

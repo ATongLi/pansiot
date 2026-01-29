@@ -1,0 +1,64 @@
+/**
+ * Tab 标签页组件样式
+ */
+
+.tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  min-width: 120px;
+  max-width: 200px;
+  height: 32px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md) var(--border-radius-md) 0 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.tab:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.tab--active {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border-bottom-color: var(--bg-primary);
+  font-weight: 500;
+}
+
+.tab__icon {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.tab__title {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.tab__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  font-size: 18px;
+  line-height: 1;
+  color: var(--text-tertiary);
+  border-radius: var(--border-radius-sm);
+  transition: all 0.2s ease;
+}
+
+.tab__close:hover {
+  background: var(--bg-danger);
+  color: var(--text-on-inverse);
+}

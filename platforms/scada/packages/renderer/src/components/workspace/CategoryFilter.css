@@ -1,0 +1,111 @@
+/**
+ * 分类筛选器样式
+ * 横向滚动的标签筛选
+ */
+
+/* 分类筛选容器 */
+.category-filter {
+  width: 100%;
+  margin-bottom: var(--spacing-lg);
+}
+
+/* 横向滚动容器 */
+.category-filter__scroll {
+  display: flex;
+  gap: var(--spacing-sm);
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  scroll-behavior: smooth;
+
+  /* 隐藏滚动条但保留功能 */
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+.category-filter__scroll::-webkit-scrollbar {
+  height: 4px;
+}
+
+.category-filter__scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.category-filter__scroll::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 2px;
+}
+
+.category-filter__scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-tertiary);
+}
+
+/* 分类标签项 */
+.category-filter__item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  font-size: var(--font-size-md);
+  font-weight: 500;  /* 样式规范: 标签使用500 */
+  color: var(--color-text-primary);
+  line-height: 1.4;  /* 新增: 统一行高 */
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+  user-select: none;
+}
+
+.category-filter__item:hover {
+  background: var(--color-bg-tertiary);
+  border-color: var(--color-accent-active);
+}
+
+.category-filter__item--active {
+  background: var(--color-accent-active);
+  border-color: var(--color-accent-active);
+  color: white;
+}
+
+.category-filter__item--active:hover {
+  background: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+}
+
+.category-filter__item:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
+}
+
+/* 分类名称 */
+.category-filter__item-name {
+  font-weight: 500;  /* 样式规范: 标签文字使用500 */
+  line-height: 1.4;  /* 新增: 统一行高 */
+}
+
+/* 工程数量徽章 */
+.category-filter__item-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;  /* 样式规范: 徽章使用600 */
+  line-height: 1;  /* 新增: 单行行高 */
+}
+
+.category-filter__item--active .category-filter__item-count {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.category-filter__item:not(.category-filter__item--active) .category-filter__item-count {
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-secondary);
+}

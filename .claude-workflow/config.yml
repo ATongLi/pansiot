@@ -1,0 +1,54 @@
+# Claude Code 工作流配置
+
+project:
+  name: "PansIot项目"
+  type: "application"
+  version: "1.0.0"
+
+# 支持的平台
+platforms:
+  - id: device
+    name: 设备端 (Device Platform)
+    enabled: true
+    modes: [gateway, hmi]
+  - id: gateway
+    name: 网关端
+    enabled: false  # Merged into device platform
+  - id: hmi
+    name: HMI运行端
+    enabled: false  # Merged into device platform
+  - id: scada
+    name: Scada软件 (HMI工程编辑器)
+    enabled: true
+    shared_editor: true
+  - id: web-editor
+    name: Web可视化编辑器
+    enabled: false  # Integrated into cloud platform
+  - id: cloud
+    name: 云平台端 (Web工程编辑器 + Runtime)
+    enabled: true
+    web_editor: true
+  - id: app
+    name: APP端
+    enabled: true
+  - id: edge-ai
+    name: 边缘智能服务器
+    enabled: false
+
+# 工作流配置
+workflow:
+  enforce_order: true
+  enable_parallel: true
+  max_parallel_tasks: 5
+  enable_dependency_ignore: true
+
+# 文档配置
+documentation:
+  auto_generate: true
+  format: markdown
+  include_api_docs: true
+
+# 追溯配置
+traceability:
+  auto_update: true
+  mapping_granularity: function

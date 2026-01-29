@@ -1,0 +1,50 @@
+/**
+ * TabBar 应用级标签栏组件样式
+ */
+
+.tabbar {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 8px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  -webkit-app-region: drag; /* 允许拖动窗口 */
+}
+
+.tabbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: 16px;
+  -webkit-app-region: no-drag; /* Logo区域不响应拖动 */
+}
+
+.tabbar__logo {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary-color);
+  line-height: 1;
+}
+
+.tabbar__title {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1;
+}
+
+.tabbar__tabs {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  height: 100%;
+  -webkit-app-region: no-drag; /* 标签区域不响应拖动 */
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.tabbar__tabs::-webkit-scrollbar {
+  height: 0;
+  width: 0;
+}

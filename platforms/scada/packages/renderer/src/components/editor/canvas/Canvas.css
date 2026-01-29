@@ -1,0 +1,121 @@
+/**
+ * Canvas Component Styles
+ *
+ * FE-006-13: 画布区域
+ */
+
+.canvas {
+  flex: 1;
+  background: var(--editor-bg-canvas);
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+}
+
+.canvas--grabbing {
+  cursor: grabbing;
+}
+
+/* ==========================================
+   Viewport
+   ========================================== */
+
+.canvas__viewport {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transform-origin: 0 0;
+  transition: transform 0.1s ease-out;
+}
+
+/* ==========================================
+   Content
+   ========================================== */
+
+.canvas__content {
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(circle, var(--editor-bg-canvas-dots) 1px, transparent 1px);
+  background-size: var(--editor-canvas-grid-size) var(--editor-canvas-grid-size);
+  position: relative;
+}
+
+/* Placeholder */
+.canvas-placeholder {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+  color: var(--color-text-tertiary);
+  pointer-events: none;
+}
+
+.canvas-placeholder__text {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  background: var(--color-bg-secondary);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--border-radius);
+  border: 2px dashed var(--color-border);
+}
+
+/* ==========================================
+   Selection
+   ========================================== */
+
+.canvas-selection {
+  position: absolute;
+  border: 2px solid var(--color-accent-active);
+  background: rgba(33, 150, 243, 0.05);
+  pointer-events: none;
+}
+
+/* ==========================================
+   Zoom Indicator
+   ========================================== */
+
+.canvas-zoom-indicator {
+  position: absolute;
+  bottom: var(--spacing-md);
+  right: var(--spacing-md);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  box-shadow: 0 2px 4px var(--color-shadow);
+  pointer-events: none;
+}
+
+/* ==========================================
+   Drag Over
+   ========================================== */
+
+.canvas--drag-over {
+  background: rgba(33, 150, 243, 0.05);
+}
+
+.canvas--drag-over::after {
+  content: '拖放到此处';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--color-accent-active);
+  color: white;
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--border-radius);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  box-shadow: 0 4px 12px var(--color-shadow);
+  pointer-events: none;
+}

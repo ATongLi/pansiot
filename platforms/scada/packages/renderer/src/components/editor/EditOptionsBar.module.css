@@ -1,0 +1,108 @@
+/**
+ * EditOptionsBar 编辑选项栏样式
+ * 支持左侧布局和顶部布局两种模式
+ */
+
+.edit-options-bar {
+  position: relative;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  display: flex;
+  overflow: hidden;
+}
+
+/* 左侧布局模式 */
+.edit-options-bar--left {
+  flex-direction: column;
+  width: 280px;
+  border-right: 1px solid var(--border-color);
+  border-bottom: none;
+  border-left: none;
+  border-top: none;
+}
+
+.edit-options-bar--left .edit-options-bar__content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 12px;
+}
+
+.edit-options-bar--left .edit-options-bar__toggle {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+/* 顶部布局模式 */
+.edit-options-bar--top {
+  flex-direction: row;
+  height: 120px;
+  border-bottom: 1px solid var(--border-color);
+  border-right: none;
+  border-left: none;
+  border-top: none;
+}
+
+.edit-options-bar--top .edit-options-bar__content {
+  flex: 1;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.edit-options-bar--top .edit-options-bar__toggle {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+}
+
+/* 布局切换按钮 */
+.edit-options-bar__toggle {
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-color);
+  background: var(--bg-primary);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  z-index: 1;
+}
+
+.edit-options-bar__toggle:hover {
+  background: var(--bg-hover);
+  border-color: var(--color-accent-active);
+  transform: scale(1.05);
+}
+
+.edit-options-bar__toggle:active {
+  transform: scale(0.95);
+}
+
+/* 滚动条样式 */
+.edit-options-bar--left .edit-options-bar__content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.edit-options-bar--top .edit-options-bar__content::-webkit-scrollbar {
+  height: 6px;
+}
+
+.edit-options-bar .edit-options-bar__content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.edit-options-bar .edit-options-bar__content::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}
+
+.edit-options-bar .edit-options-bar__content::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-active);
+}

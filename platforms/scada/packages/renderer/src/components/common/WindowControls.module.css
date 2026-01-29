@@ -1,0 +1,40 @@
+/**
+ * WindowControls 窗口控制按钮组件样式
+ */
+
+.window-controls {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.window-controls__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 100%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.window-controls__button:hover {
+  background: var(--bg-hover);
+}
+
+.window-controls__button--close:hover {
+  background: #e81123;
+  color: white;
+}
+
+.window-controls__icon {
+  font-size: 10px;
+  line-height: 1;
+  user-select: none;
+}
+
+.window-controls__icon--restore {
+  font-size: 12px;
+}

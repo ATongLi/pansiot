@@ -1,0 +1,169 @@
+/**
+ * StatusBar Component Styles
+ *
+ * FE-006-14: 底部状态栏
+ * 高度: 24px
+ * 遵循 STYLE_GUIDE.md 紧凑工业风格
+ */
+
+.statusbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--editor-statusbar-height);
+  background: var(--editor-statusbar-bg);
+  border-top: 1px solid var(--editor-statusbar-border);
+  padding: 0 var(--spacing-md);
+  font-size: var(--font-size-xs);
+  color: var(--editor-statusbar-text);
+  user-select: none;
+}
+
+/* ==========================================
+   Sections
+   ========================================== */
+
+.statusbar__section {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.statusbar__section--left {
+  flex: 1;
+  justify-content: flex-start;
+}
+
+.statusbar__section--center {
+  flex: 0 0 auto;
+  justify-content: center;
+}
+
+.statusbar__section--right {
+  flex: 1;
+  justify-content: flex-end;
+}
+
+/* ==========================================
+   Items
+   ========================================== */
+
+.statusbar__item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  white-space: nowrap;
+}
+
+.statusbar__item__label {
+  color: var(--editor-statusbar-text);
+  opacity: 0.8;
+}
+
+.statusbar__item__label--spacer {
+  margin-left: var(--spacing-sm);
+}
+
+.statusbar__item__value {
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+.statusbar__item__value--modified {
+  color: var(--color-warning);
+}
+
+/* Interactive Items */
+.statusbar__item--interactive {
+  cursor: pointer;
+  padding: 2px var(--spacing-xs);
+  border-radius: 2px;
+  transition: all var(--transition-fast);
+}
+
+.statusbar__item--interactive:hover {
+  background: var(--color-bg-hover);
+  color: var(--color-text-primary);
+}
+
+.statusbar__item--interactive:active {
+  transform: translateY(1px);
+}
+
+/* Error Indicator */
+.statusbar__item--error {
+  color: var(--color-error);
+  cursor: pointer;
+  padding: 2px var(--spacing-xs);
+  border-radius: 2px;
+  transition: background-color var(--transition-fast);
+}
+
+.statusbar__item--error:hover {
+  background: rgba(220, 38, 38, 0.1);
+}
+
+/* ==========================================
+   Zoom Control
+   ========================================== */
+
+.statusbar__zoom-control {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.statusbar__zoom-button {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--editor-statusbar-text);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.statusbar__zoom-button:hover:not(:disabled) {
+  background: var(--color-bg-hover);
+  border-color: var(--color-border);
+  color: var(--color-text-primary);
+}
+
+.statusbar__zoom-button:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.statusbar__zoom-button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.statusbar__zoom-label {
+  min-width: 40px;
+  text-align: center;
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  color: var(--editor-statusbar-text);
+  user-select: none;
+}
+
+/* ==========================================
+   Responsive
+   ========================================== */
+
+@media (max-width: 900px) {
+  .statusbar__section--left .statusbar__item:nth-child(n+3) {
+    display: none;
+  }
+
+  .statusbar__section--right .statusbar__item:nth-child(2) {
+    display: none;
+  }
+}
